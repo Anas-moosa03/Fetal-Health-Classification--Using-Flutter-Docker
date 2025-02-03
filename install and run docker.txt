@@ -1,0 +1,15 @@
+1.
+docker build -t md-project .
+
+2.
+docker run -p 5000:5000 md-project
+
+
+OR 
+
+docker run -p 5000:5000 -d md-project5
+
+but this will run in detached mode (-d) and not show output in cmd
+
+3. 
+navigate to localhost:5000
