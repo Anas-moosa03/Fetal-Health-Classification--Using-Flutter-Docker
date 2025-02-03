@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function autofill(preset) {
+    const presets = {
+        1: ['100', '0.1', '0', '0.2', '0.1', '0', '0', '30', '1', '5', '10', '120', '130', '140', '5', '1', '120', '125', '130', '5', '1'],
+        2: ['151.0', '0.0', '0.0', '0.001', '0.001', '0.0', '0.0', '64.0', '1.9', '9.0', '27.6', '130', '56', '186', '2.0', '0', '150', '148', '151', '9', '1'],
+        3: ['134','0.001','0','0.01','0.009','0','0.002','26','5.9','0','0','150','50','200','5','3','76','107','107','170','0']
+    };
+
+    const values = presets[preset];
+    values.forEach((value, index) => {
+        document.getElementById('input' + (index + 1)).value = value;
+    });
+}
+</script>
+
+<title>{% block title %}{% endblock %}</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #b8b8b8; /*  grey background */
+    }
+    .navbar {
+        overflow: hidden;
+        background-color: #237d28; /* green background for the navbar */
+        font-size: 16px;
+    }
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+    .navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .main-content {
+        text-align: center;
+        padding: 50px 20px;
+    }
+    .main-title {
+        font-size: 48px; /* larger font size for the title */
+        color: #333; /* darker font color for better readability */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* rounded, modern font */
+    }
+    .names {
+        margin-top: 20px; /* spacing between text box and names */
+        font-size: 20px; /* larger font size for the names */
+        color: #555; /* soft color for the names */
+    }
+    .description {
+        font-size: 20px; /* text size for description box */
+        color: #666; /* color for description text */
+        margin: 20px auto; /* vertical space around the textbox */
+        width: 80%; /* width of the textbox */
+        border: 1px solid #ccc; /* border color and style */
+        padding: 15px; /* padding inside the textbox */
+        border-radius: 8px; /* rounded corners */
+        background-color: white; /* background color of the textbox */
+    }
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a> <!-- Link back to the home page -->
+        <a href="/eda">EDA Visualizations</a>
+        <a href="/predictions">Predictions</a>
+        <a href="/results">Model Results</a>
+    </div>
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
