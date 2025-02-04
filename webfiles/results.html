@@ -1,0 +1,62 @@
+
+
+
+{% extends 'layout.html' %}
+{% block title %}Results Visualizations{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image and Text Table</title>
+    <style>
+        table {
+            width: 100%; /* Full width of the container */
+            border-collapse: collapse; /* Collapses the border lines between cells */
+        }
+        th, td {
+            border: 0px solid black; /* Adds a border to each cell */
+            padding: 60px; /* Adds padding inside each cell */
+        }
+        img {
+            width: 600px; /* Sets a fixed width for the images */
+            height: auto; /* Maintains the aspect ratio of the images */
+            border-radius: 5%; /* Rounded corners */
+            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+        }
+        img:hover {
+            transform: scale(1.2); /* Scales up the image to 120% of its original size */
+        }
+        .text {
+            vertical-align: center; /* Aligns the text to the top of the cell */
+			font-size : 22px;
+        }
+    </style>
+</head>
+<body>
+<h1>Model Results Visualizations</h1>
+    <table>
+                <tr>
+            <td><img src="{{ url_for('static', filename='images/results1.png') }}" alt="Description for Image 1"></td>
+            <td class="text" > This matrix shows the actual vs. predicted classifications of fetal health by the model, where each cell color intensity indicates the count of predictions.<br><br>
+ The model performs well in predicting Normal cases but shows some errors, particularly in distinguishing between Suspect and Pathological cases.</td>
+        </tr>
+		<tr>
+            <td><img src="{{ url_for('static', filename='images/results4.png') }}" alt="Description for Image 3" ></td>
+            <td class="text">This bar chart ranks features based on their importance in influencing the model's predictions.<br><br>
+Features like abnormal short-term variability and mean value of short-term variability appear to be most influential. </td>
+        </tr>
+        <tr>
+            <td><img src="{{ url_for('static', filename='images/results2.png') }}" alt="Description for Image 2"></td>
+            <td class="text">This graph shows the training and cross-validation scores as a function of the number of training examples used.<br><br>
+ Both curves converge, indicating that adding more training examples might not significantly improve the model's performance. The model is stable, with a good generalization as seen from the close performance scores between training and validation.</td>
+        </tr>
+        <tr>
+            <td><img src="{{ url_for('static', filename='images/results3.png') }}" alt="Description for Image 3" ></td>
+            <td class="text"> This Receiver Operating Characteristic (ROC) curve shows the true positive rate against the false positive rate for different decision thresholds.<br><br>
+The abrupt rise and high area under the curve (AUC) close to 1 suggest that the model has excellent discriminative ability to separate the classes, particularly between Normal and more severe conditions.</td>
+        </tr>
+    </table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+{% block title %}Predictions{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predictions</title>
+</head>
+<body>
+    <h1>Model Predictions</h1>
+    <h3 style="text-align:left">Enter your own predictions or select one of the presets options:</h3><br>
+    <div class="container">
+        <div class="inputs">
+            <form action="/predictions" method="post" id="predictForm">
+                <table>
+                {% for feature in feature_names %}
+                    <tr>
+                        <td><label for="input{{ loop.index }}">{{ feature }}:</label></td>
+                        <td><input type="text" id="input{{ loop.index }}" name="input{{ loop.index }}" required></td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </form>
+        </div>
+        <div class="button">
+            <button type="submit" form="predictForm" class="buttonPredict" style="font-size:2vw">Predict</button>
+            <button type="button" onclick="autofill(1)" style="font-size:2vw">Preset 1</button>
+            <button type="button" onclick="autofill(2)" style="font-size:2vw">Preset 2</button>
+            <button type="button" onclick="autofill(3)" style="font-size:2vw">Preset 3</button>
+        
+        <div class="result">
+            <label for="result" style="font-size:2vw">Result:</label>
+            <input type="text" id="result" name="result" value="{{ result }}" disabled style="font-size:3vw">
+        </div></div>
+    </div>
+</body>
+</html>
+
+<style>
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputs, .buttons {
+    flex: 1;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 60%;
+    padding: 20px 30px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.buttonPredict {
+    background-color: #A020F0; /* Purple */
+    color: white;
+}
+
+.buttonPredict:hover {
+    background-color: #B95CF4; /* Darker Purple */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 4px;
+    vertical-align: top;
+    text-align: left;
+}
+</style>
+
+{% endblock %}

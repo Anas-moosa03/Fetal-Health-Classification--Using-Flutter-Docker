@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block title %}Home - Fetal Health Classification{% endblock %}
+{% block content %}
+<h1 class="main-title">Fetal Health Classification</h1>
+<table class="center">
+    <tr>
+        <td style="width: 60%; vertical-align: top; text-align: left;">
+            <p>Reduction of child mortality is reflected in several of the United Nations' Sustainable Development Goals and is a key indicator of human progress.</p>
+			<p>This dataset contains 2126 records of 21 features extracted from Cardiotocogram exams, which were then classified by three expert obstetricians into 3 classes:</p>
+            <ul>
+                <li>Normal</li>
+                <li>Suspect</li>
+                <li>Pathological</li>
+            </ul>
+			<p> The model trained was a Random Forest Classifier and an accuracy of 94.4% was achieved </p>
+        </td>
+        <td style="width: 40%; vertical-align: top;">
+            <img src="{{ url_for('static', filename='images/fetus2.png') }}" alt="Fetal Health" style="width: 70%; height: auto;">
+        </td>
+    </tr>
+</table>
+<p class="names">Done by: Mohammad Zahra, Khaled Al-Shrouf, Anas Moosa</p>
+<style>
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width:90%;
+}
+</style>
+{% endblock %}
